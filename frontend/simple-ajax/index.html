@@ -6,6 +6,16 @@
                 alert("Data: " + data + "\nStatus: " + status);
             });
         });
+
+        $("#post").click(function () {
+            $.post("post.php",
+                {
+                    nama: "Agung"
+                },
+                function (data, status) {
+                    alert("Data: " + data + "\nStatus: " + status);
+                });
+        });
     });
 </script>
 </head>
@@ -17,6 +27,7 @@
     </div>
 
     <button>Get External Content</button>
+    <button id="post">Post Nama</button>
 
 </body>
 
