@@ -10,14 +10,12 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Build Vue
-        uses: actions/setup-node@master
-        run: |
-          cd ./vue
-          npm install
-          npm run build
+      - uses: actions/checkout@master
+      #6. Always have this line; It contains the run instructions for the below steps
+      - uses: actions/setup-node@master
+      #7. The above line will set up NodeJS (the latest version ) because we are deploying a VueJS project.
+      - run: cd ./vue && npm install
+      - run: cd ./vue && npm run build
       - name: Sync
         env:
           dest: "ubuntu@3.104.79.107:/home/ubuntu/belajar-vue.kelasdevops.xyz/"
